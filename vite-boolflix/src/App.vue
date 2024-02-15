@@ -13,23 +13,48 @@ export default{
        AppHeader,  
        AppMain 
       },
-      methods:{
-        //https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=ritorno+al+fut//
-         getData(){
-        if(store.searchText){
-        
-          axios.get(`${store.enpointMovies}?api_key=${store.apiKey}&query=${store.searchText}`).then((res) =>{
-            console.log(res.data.results)
+      // ... (previous code)
 
-          }).catch((err)=>{
-            console.log(err)
-          })
-        }
- 
-        }
-       
-        
-      },
+methods: {
+  getMovie(apiParms) {
+    // Check if searchText is not empty before making the request
+    if (store.searchText) {
+      axios.get(store.endpointMovies, { params: apiParms })
+        .then((res) => {
+          console.log(res.data.results);
+          store.movies = res.data.results;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  },
+  getSeries(apiParms) {
+    // Check if searchText is not empty before making the request
+    if (store.searchText) {
+      axios.get(store.endpointSeries, { params: apiParms })
+        .then((res) => {
+          console.log(res.data.results);
+          store.series = res.data.results;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  },
+  search() {
+    const apiParms = {
+      api_key: store.apiKey,
+      query: store.searchText,
+    };
+
+    this.getMovie(apiParms);
+    this.getSeries(apiParms);
+  },
+},
+
+// ... (remaining code)
+
       mounted(){
 
       }
@@ -37,7 +62,7 @@ export default{
 </script>
 
 <template>
-  <AppHeader @emitGetData="getData"></AppHeader>
+  <AppHeader @emitGetData="search"></AppHeader>
   <AppMain></AppMain>
 
  
