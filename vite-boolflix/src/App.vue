@@ -19,7 +19,7 @@ export default{
   getMovies(apiParams) {
     // Check if searchText is not empty before making the request
     if (store.searchText) {
-      axios.get(store.endpointMovies, { params: apiParams }) // Fix the parameter name here
+      axios.get(store.endpointMovies, apiParams ) // Fix the parameter name here
         .then((res) => {
           console.log(res.data.results);
           store.movies = res.data.results;
@@ -32,7 +32,7 @@ export default{
   getSeries(apiParams) {
     // Check if searchText is not empty before making the request
     if (store.searchText) {
-      axios.get(store.endpointSeries, { params: apiParams }) // Fix the parameter name here
+      axios.get(store.endpointSeries, apiParams) // Fix the parameter name here
         .then((res) => {
           console.log(res.data.results);
           store.series = res.data.results;
