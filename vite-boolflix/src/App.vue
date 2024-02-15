@@ -4,7 +4,7 @@ import AppHeader from './components/AppHeader.vue';
 
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
-import { store } from './store';
+import {store} from './store';
 export default{
     data() {
         return {store};
@@ -15,11 +15,11 @@ export default{
       },
       // ... (previous code)
 
-methods: {
-  getMovie(apiParms) {
+      methods: {
+  getMovies(apiParams) {
     // Check if searchText is not empty before making the request
     if (store.searchText) {
-      axios.get(store.endpointMovies, { params: apiParms })
+      axios.get(store.endpointMovies, { params: apiParams }) // Fix the parameter name here
         .then((res) => {
           console.log(res.data.results);
           store.movies = res.data.results;
@@ -29,10 +29,10 @@ methods: {
         });
     }
   },
-  getSeries(apiParms) {
+  getSeries(apiParams) {
     // Check if searchText is not empty before making the request
     if (store.searchText) {
-      axios.get(store.endpointSeries, { params: apiParms })
+      axios.get(store.endpointSeries, { params: apiParams }) // Fix the parameter name here
         .then((res) => {
           console.log(res.data.results);
           store.series = res.data.results;
@@ -43,14 +43,16 @@ methods: {
     }
   },
   search() {
-    const apiParms = {
-      api_key: store.apiKey,
-      query: store.searchText,
-    };
+    const apiParams = {
+    params: {
+    api_key: store.apiKey,
+    query: store.searchText,
+  }
+  };
 
-    this.getMovie(apiParms);
-    this.getSeries(apiParms);
-  },
+    this.getMovies(apiParams)
+    this.getSeries(apiParams)
+  }
 },
 
 // ... (remaining code)
@@ -68,5 +70,5 @@ methods: {
  
 </template>
 
-<style scoped>
+<style lang="scss">
 </style>
