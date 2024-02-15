@@ -4,7 +4,7 @@ export const store= reactive({
     movies:[],
     series:[],
     apiKey:'e1636b0170219715ac2faa25dc290353',
-    enpointMovies:'https://api.themoviedb.org/3/search/movie',
-    enpointSeries:'https://api.themoviedb.org/3/search/tv'
+    endpointMovies:'https://api.themoviedb.org/3/search/movie',
+    endpointSeries:'https://api.themoviedb.org/3/search/tv'
 
 })
