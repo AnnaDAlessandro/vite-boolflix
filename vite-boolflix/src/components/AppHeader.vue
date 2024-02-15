@@ -4,7 +4,7 @@ export default{
     name:'AppHeader',
     data (){
         return{
-
+           store
         }
     }
 }
@@ -22,9 +22,10 @@ export default{
          class="form-control "
          name=""
          id="search"
-         placeholder="Cosa vuoi vedere?">
+         placeholder="Cosa vuoi vedere?"
+         v-model="store.searchText">
          <button class="btn btn-secondary">
-          <i class="fas fa-magnifying-glass"></i>
+          <i class="fas fa-magnifying-glass" @click="$emit('emitGetData')"></i>
          </button>
      </div>
 
