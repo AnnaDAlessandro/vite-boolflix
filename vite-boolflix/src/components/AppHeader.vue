@@ -10,6 +10,11 @@ export default{
 </script>
 
 <template>
+    <header class="p-3">
+        <h1>
+            Boolflix
+        </h1>
+    </header>
  
 </template>
 
