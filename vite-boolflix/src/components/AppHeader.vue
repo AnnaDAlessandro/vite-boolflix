@@ -16,8 +16,8 @@ export default{
             Boolflix
         </h1>
  
-      <div class="d-flex align-items-center gap-4">
-        <label for="search" class="form-label">Cerca</label>
+      <div class="d-flex align-items-center gap-4 g-0">
+     <label for="search" class="form-label">Cerca:</label>
          <input type="text"
          class="form-control "
          name=""
@@ -33,5 +33,8 @@ export default{
  
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+h1{
+    color: red;
+}
 </style>
