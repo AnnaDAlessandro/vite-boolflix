@@ -32,10 +32,11 @@ export default{
 
 <template>
  <div class="col-2">
-    <div class="card" >
+    <div class="card border-0" >
     <img :src= "`https://image.tmdb.org/t/p/w342/${item.poster_path}`" class="card-img-top" alt="...">
     <div class="card-body">
-    <h4 class="card-title">{{item.original_title ? item.original_title : item.original_name}}</h4>
+    <div class="testo">
+ <h4 class="card-title">{{item.original_title ? item.original_title : item.original_name}}</h4>
     <figure>
         <img :src="`https://flagsapi.com/${changeFlags(item.original_language.toUpperCase())}/flat/24.png`"
         width="24"
@@ -51,6 +52,8 @@ export default{
         </li>
     </ul>
     <p class="card-text">{{item.overview}}</p>
+    </div>
+   
     
     </div>
     </div>
@@ -60,24 +63,45 @@ export default{
 </template>
 
 <style lang="scss">
-.card{
-    margin: 5px;
-    h4{
-        overflow: scroll;
-        height: 60px;
-        scrollbar-width:none;
+.card {
+  margin: 10px;
+  padding-bottom: 50px;
+  position: relative;
+
+  .card-body {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    h4, p, ul {
+      overflow: scroll;
+      scrollbar-width: none;
     }
-    p{
-        overflow: scroll;
-        height: 200px;
-        scrollbar-width:none;
+
+    h4 {
+      height: 60px;
     }
-    ul{
-        li{
-            list-style-type: none;
-            width: 80%;
-            margin: 0 auto;
-        }
+
+    p {
+      height: 200px;
     }
+
+    ul {
+      li {
+        list-style-type: none;
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &:hover .card-body {
+    display: block;
+    background-color: black;
+    
+  }
 }
+
 </style>
